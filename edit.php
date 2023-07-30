@@ -1,67 +1,79 @@
 <?php
-
 $servername = "localhost";
- $username = "root";
- $password = "";
- $database = "assignment";
+$username = "root";
+$password = "";
+$database = "assignment";
 
- //create connection
- $connection = new mysqli($servername,$username,$password,$database);
+// Create connection
+$connection = new mysqli($servername, $username, $password, $database);
 
-$title ="";
-$first_name ="";
-$middle_name ="";
-$last_name ="";
-$contact_no ="";
-$district ="";
-
+$title = "";
+$first_name = "";
+$middle_name = "";
+$last_name = "";
+$contact_no = "";
+$district = "";
 
 $errorMessage = "";
 $successMessage = "";
 
-if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title= $_POST["title"];
-    $first_name= $_POST["first_name"];
-    $middle_name= $_POST["middle_name"];
-    $last_name= $_POST["last_name"];
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Get method to show the data of the client
+    if (!isset($_GET["id"])) {
+        header("location: /PHP-ERP-System/index.php");
+        exit;
+    }
+    $id = $_GET["id"];
+
+    // Read the row of the selected customer from the database table
+    $sql = "SELECT * FROM customer WHERE id=$id";
+    $result = $connection->query($sql);
+    $row = $result->fetch_assoc();
+
+    if (!$row) {
+        header("location: /PHP-ERP-System/index.php");
+        exit;
+    }
+
+    $title = $row["title"];
+    $first_name = $row["first_name"];
+    $middle_name = $row["middle_name"];
+    $last_name = $row["last_name"];
+    $contact_no = $row["contact_no"];
+    $district = $row["district"];
+} else {
+    // POST method: update the data of the client
+
+    // Make sure to get the 'id' from the form submission
+    $id = $_POST["id"];
+
+    $title = $_POST["title"];
+    $first_name = $_POST["first_name"];
+    $middle_name = $_POST["middle_name"];
+    $last_name = $_POST["last_name"];
     $contact_no = $_POST["contact_no"];
     $district = $_POST["district"];
 
-
-  do {
-    if( empty($title) || empty($first_name) || empty($middle_name) || empty($last_name) || empty($contact_no) || empty($district)) {
+    if (empty($title) || empty($first_name) || empty($middle_name) || empty($last_name) || empty($contact_no) || empty($district)) {
         $errorMessage = "All the fields are required";
-        break;
+    } else {
+        $sql = "UPDATE customer " .
+            "SET title='$title', first_name='$first_name', middle_name='$middle_name', last_name='$last_name', contact_no='$contact_no', district='$district' " .
+            "WHERE id = $id";
+
+        $result = $connection->query($sql);
+
+        if (!$result) {
+            $errorMessage = "Invalid Query: " . $connection->error;
+        } else {
+            $successMessage = "Client updated correctly";
+            header("location: /PHP-ERP-system/index.php");
+            exit;
+        }
     }
-    //add new customer
-    $sql = "INSERT INTO customer(title,first_name,middle_name,last_name,contact_no,district)" .
-      "VALUES ('$title','$first_name','$middle_name','$last_name','$contact_no','$district')";
-      $result = $connection->query($sql);
-
-      if(!$result) {
-        $errorMessage= "Invalid query:" . $connection->error;
-        break;
-      }
-    
-    $title= "";
-    $first_name= "";
-    $middle_name= "";
-    $last_name= "";
-    $contact_no = "";
-    $district = "";
-
-    $successMessage = "Customer Added Successfully";
-
-    header("location: /PHP-ERP-system/index.php");
-    exit;
-
-
-  } while (false);
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,6 +101,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
 
         <form method="post">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
 
         <div class="row mb-3">
        <label class="col-sm-3 col-from-lable">Title</label>
@@ -149,7 +162,7 @@ if ( !empty($successMessage)) {
         <button type="submit" class="btn btn-primary">Submit</btton>
     </div>
     <div class="col-sm-3 col-sm-3 d-grid">
-        <a class="btn btn-primary" href="/PHP-ERP-System/index.php" role="button">Cancle</a>
+        <a class="btn btn-primary" href="/PHP-ERP-system/index.php" role="button">Cancle</a>
 </div>
         </form>
 
