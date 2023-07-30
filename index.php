@@ -14,7 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id.</th>
+                    <th>Id</th>
                     <th>Title</th>
                     <th>First_Name</th>
                     <th>Middle_Name</th>
