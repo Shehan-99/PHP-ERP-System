@@ -2,23 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Shop</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="style.css"> 
 </head>
 
    
             
        
 <body>
-<div class="container my-5">
-        <h2>List of Customers</h2>
-        <a class="btn btn-primary mb-3" href="/PHP-ERP-system/insert.php" role="button">New Customer</a>
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
+<div>
+        <h2 id ='csheader'>List of Customers</h2>
+        <button id='btnadd'><a href="/PHP-ERP-system/insert.php" role="button">+ ADD</a></button>
+        <table id ="cstable" >
+            <thead>
+                <tr id="custr">
                     <th>Id</th>
                     <th>Title</th>
                     <th>First Name</th>
@@ -29,7 +25,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody style ="color:aqua";>
+            <tbody>
                 <?php
                 $servername = "localhost";
                 $username = "root";
@@ -64,8 +60,8 @@
                     <td>$row[contact_no]</td>
                     <td>$row[district]</td>
                     <td>
-                        <a class='btn btn-primary btn-sm' href='/PHP-ERP-System/edit.php?id=$row[id]'>Edit</a>
-                        <a class='btn btn-danger btn-sm' href='/PHP-ERP-System/delete.php?id=$row[id]'>Delete</a>
+                        <button class='btnE'><a href='/PHP-ERP-System/edit.php?id=$row[id]'>Edit</a></button>
+                        <button class='btnD'<a class='btn btn-danger btn-sm' href='/PHP-ERP-System/delete.php?id=$row[id]'>Delete</a></button>
                     </td>
                 </tr>
                     ";

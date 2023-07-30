@@ -66,15 +66,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My shop</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    
+<link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div class="container my-5">
-        <h2> New Customer </h2>
+        <h2 id="cus"> Register Customer </h2>
 
 
         <?php 
@@ -88,9 +84,64 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
 
-        <form method="post">
+    <form method="post" >
 
-        <div class="row mb-3">
+    <label id="l1" for="title">Title</label>
+    <select id="title" name="title" value="<?php echo $title; ?>">
+     <option >...Select...</option>
+      <option value="mr">Mr</option>
+      <option value="mrs">Mrs</option>
+      <option value="miss">Miss</option>
+      <option value="dr">Dr</option>
+      
+    </select>
+    </br>
+    <label id="l1" for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname"  value="<?php echo $first_name; ?>">
+    </br>
+    <label id="l1" for="lname">Middle Name</label>
+    <input type="text" id="mname" name="middlename"  value="<?php echo $middle_name; ?>">
+    </br>
+    <label id="l1" for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname"  value="<?php echo $last_name; ?>">
+    </br>  
+    <label id="l1" for="cno">Contact No</label>
+    <input type="text" id="cno" name="cno"  value="<?php echo $contact_no; ?>">
+    </br>
+    <label id="l1" for="title">District</label>
+    <select id="district" name="district" value="<?php echo $district; ?>">
+     <option >...Select...</option>
+      <option >1</option>
+      <option >2</option>
+      <option >3</option>
+      <option >4</option>
+      <option >5</option>
+      <option >6</option>
+      <option >7</option>
+      <option >8</option>
+      <option >9</option>
+      <option >10</option>
+      <option >11</option>
+      <option >12</option>
+      <option >13</option>
+      <option >14</option>
+      <option >15</option>
+      <option >16</option>
+      <option >17</option>
+      <option >18</option>
+      <option >19</option>
+      <option >20</option>
+      <option >21</option>
+      <option >22</option>
+      <option >23</option>
+      <option >24</option>
+      <option >25</option>
+      
+    </select>
+  
+  </form>
+
+        <!-- <div class="row mb-3">
        <label class="col-sm-3 col-from-lable">Title</label>
        <div class= "col-sm-6">
        <input type="text"  class="form-control" name="title" value="<?php echo $title; ?>">
@@ -102,9 +153,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
        <div class= "col-sm-6">
        <input type="text"  class="form-control" name="first_name" value="<?php echo $first_name; ?>">
     </div>
-</div>
+</div> -->
 
-    <div class="row mb-3">
+    <!-- <div class="row mb-3">
        <label class="col-sm-3 col-from-lable">Middle_Name</label>
        <div class= "col-sm-6">
        <input type="text"  class="form-control" name="middle_name" value="<?php echo $middle_name; ?>">
@@ -123,14 +174,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
        <div class= "col-sm-6">
        <input type="text"  class="form-control" name="contact_no" value="<?php echo $contact_no; ?>">
     </div>
-</div>
+</div> -->
 
-<div class="row mb-3">
+<!-- <div class="row mb-3">
        <label class="col-sm-3 col-from-lable">District</label>
        <div class= "col-sm-6">
        <input type="text"  class="form-control" name="district" value="<?php echo $district; ?>">
     </div>
-</div>
+</div> -->
 
 <?php 
 if ( !empty($successMessage)) {
@@ -146,10 +197,10 @@ if ( !empty($successMessage)) {
 
 <div class="row mb-3">
     <div class="offset-sm-3 col-sm-3 d-grid">
-        <button type="submit" class="btn btn-primary">Submit</btton>
+        <button type="submit" class="submit"><a href="/PHP-ERP-System/index.php" role="button">Submit</btton>
     </div>
     <div class="col-sm-3 col-sm-3 d-grid">
-        <a class="btn btn-primary" href="/PHP-ERP-System/index.php" role="button">Cancle</a>
+        <button class='canclebtn'><a href="/PHP-ERP-System/index.php" role="button">Cancle</a></button>
 </div>
         </form>
 
