@@ -1,8 +1,7 @@
-#cstable {
+#itable {
     border-collapse: collapse;
     width: 80%;
     margin: 18.5px 180px;
-    
     
   }
   
@@ -19,7 +18,7 @@
   
   tr:hover {background-color: rgb(213, 211, 236);}
 
-  #custr
+  #item1
   {
     background-color: #89ebe2;
     height: 50px;
@@ -27,7 +26,7 @@
     
   }
   
-  .btnE{
+  .btnEi{
     background-color: #3557ec; 
   border: none;
   color: rgb(10, 10, 10);
@@ -44,7 +43,7 @@
   
   }
 
-  .btnD{
+  .btnDi{
     background-color: #eb2c4c; 
   border: none;
   color: rgb(10, 10, 10);
@@ -79,14 +78,9 @@
     
   }
 
-  #csheader{
+  #iheader{
     margin:0px 500px;
     text-align: center;
     font-size: 50px;
     font-family: 'Times New Roman';
   }
-
-
-
-  /*form..............................................................................................................*/
-

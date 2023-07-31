@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="style.css"> 
+<link rel="stylesheet" href="item.css"> 
 </head>
 
    
@@ -10,18 +10,19 @@
        
 <body>
 <div>
-        <h2 id ='csheader'>List of Customers</h2>
-        <button id='btnadd'><a href="/PHP-ERP-system/insert.php" role="button">+ ADD</a></button>
-        <table id ="cstable" >
+        <h2 id ='iheader'>List of Item</h2>
+        
+        <button id='btnadd'><a href="/PHP-ERP-system/item/iadd.php" role="button">+ ADD</a></button>
+        <table id ="itable" >
             <thead>
-                <tr id="custr">
+                <tr id="item1">
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Contact No</th>
-                    <th>District</th>
+                    <th>Item Code</th>
+                    <th>Item Category</th>
+                    <th>Item SubCategory</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -41,7 +42,7 @@
                 }
 
                 // Read all rows from the database
-                $sql = "SELECT * FROM customer";
+                $sql = "SELECT * FROM item";
                 $result = $connection->query($sql);
 
                 if (!$result) {
@@ -53,15 +54,15 @@
                     echo "
                     <tr>
                     <td>$row[id]</td>
-                    <td>$row[title]</td>
-                    <td>$row[first_name]</td>
-                    <td>$row[middle_name]</td>
-                    <td>$row[last_name]</td>
-                    <td>$row[contact_no]</td>
-                    <td>$row[district]</td>
+                    <td>$row[item_code]</td>
+                    <td>$row[item_category]</td>
+                    <td>$row[item_subcategory]</td>
+                    <td>$row[item_name]</td>
+                    <td>$row[quantity]</td>
+                    <td>$row[unit_price]</td>
                     <td>
-                        <button class='btnE'><a href='/PHP-ERP-System/edit.php?id=$row[id]'>Edit</a></button>
-                        <button class='btnD'><a href='/PHP-ERP-System/delete.php?id=$row[id]'>Delete</a></button>
+                        <button class='btnEi'><a href='/PHP-ERP-System/item/iedit.php?id=$row[id]'>Edit</a></button>
+                        <button class='btnDi'><a href='/PHP-ERP-System/item/idelete.php?id=$row[id]'>Delete</a></button>
 
 
                     </td>
